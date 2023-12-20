@@ -7,7 +7,7 @@ const name = ref('')
 
 const input_content = ref('')
 const input_category = ref(null)
-const input_deadline = ref('tomorrow')
+const input_importance = ref('Usually')
 
 const colorClass = ['bg-red-500', 'bg-blue-500']
 
@@ -24,7 +24,7 @@ const addTodo = () => {
   todos.value.push({
     content: input_content.value,
     category: input_category.value,
-    deadline: input_deadline.value,
+    importance: input_importance.value,
     done: false,
     createAt: new Date().getTime()
   })
@@ -101,14 +101,13 @@ onMounted(() =>{
 
 
         <div class="my-8">
-          <label for="deadlines" class="block text-sm font-medium text-gray-700">Choose a deadline:</label>
+          <label for="importance" class="block text-sm font-medium text-gray-700">Select importance:</label>
           <div class="mt-1 relative rounded-md shadow-sm">
-            <select v-model="input_deadline" class="block appearance-none w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
-              <option value="today">Today</option>
-              <option value="tomorrow">Tomorrow</option>
-              <option value="Day after tomorrow">Day after tomorrow</option>
-              <option value="A week later">A week later</option>
-              <option value="A month later">A month later</option>
+            <select v-model="input_importance" class="block appearance-none w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+              <option value="Usually">Usually</option>
+              <option value="Important">Important</option>
+              <option value="Very important">Very important</option>
+              <option value="Highest priority">Highest priority</option>
             </select>
           </div>
         </div>
@@ -130,8 +129,8 @@ onMounted(() =>{
             <div class="max-w-[300px] p-2">
               <span :class="`ml-2 text-gray-700 ${todo.done ? 'line-through text-gray-200' : ''} select-none max-w-[300px]`">{{ todo.content }}</span>
               <span :class="`select-none max-w-[300px] block truncate`">
-                <span :class="`text-gray-700 ${todo.done ? 'line-through text-gray-200' : ''}`">Deadline: </span>
-                <span :class="`${todo.done ? 'line-through text-gray-200' : 'text-red-500'}`">{{ todo.deadline }}</span>
+                <span :class="`text-gray-700 ${todo.done ? 'line-through text-gray-200' : ''}`">Importance: </span>
+                <span :class="`${todo.done ? 'line-through text-gray-200' : 'text-red-500'}`">{{ todo.importance }}</span>
               </span>
             </div>
             <div class="actions ml-auto p-2 pb-4">
