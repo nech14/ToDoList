@@ -55,7 +55,7 @@ onMounted(() =>{
 <template>
 
   <!-- Ваш HTML-код -->
-<main class="flex p-8">
+<main class="flex p-8 h-screen w-screen bg-gray-100">
   <div class="w-screen max-w-md mx-auto bg-white rounded-md shadow-md overflow-hidden">
     <section class="w-full p-6">
       <form @submit.prevent="addTodo">
